@@ -35,7 +35,7 @@ def run_dummy_server():
     server.serve_forever()
 
 # ----------------- কনফিগারেশন ও ক্রেডেনশিয়াল -----------------
-BOT_TOKEN = "9258333117:AAHayp7MMKpyk9lChaFtypJ_l2VbMKr4OPs"
+BOT_TOKEN = "9258333117:AAG6uXbLsFrpfflK9vr327W-xW7RGLdq_zw"
 ADMIN_ID = 6087200623
 DB_NAME = "trade_hub_production.db"
 
