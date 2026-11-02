@@ -35,7 +35,8 @@ def run_dummy_server():
     server.serve_forever()
 
 # ----------------- কনফিগারেশন ও ক্রেডেনশিয়াল -----------------
-BOT_TOKEN = "9258333117:AAG6uXbLsFrpfflK9vr327W-xW7RGLdq_zw"
+# নিরাপত্তা নিশ্চিত করতে os.environ ব্যবহার করা হয়েছে
+BOT_TOKEN = os.environ.get("BOT_TOKEN", "9258333117:AAG6uXbLsFrpfflK9vr327W-xW7RGLdq_zw")
 ADMIN_ID = 6087200623
 DB_NAME = "trade_hub_production.db"
 
@@ -93,9 +94,9 @@ async def init_db():
             'faq_msg': (
                 "❓ <b>সচরাচর জিজ্ঞাসিত প্রশ্নাবলী (FAQs):</b>\n\n"
                 "<b>প্রশ্ন:</b> আমি কীভাবে টোকেন বা ডলার বিক্রি করব?\n"
-                "<b>উত্তর:</b> মেনু থেকে 🛒 Sell Tokens & Rates-এ গিয়ে আপনার টোকেন সিলেক্ট করে ডিপোজিট এড্রেসে পাঠিয়ে দিন। তারপর স্ক্রিনশট ও আপনার বিকাশ/নগদ/USDT এড্রেস চ্যাটে দিন。\n\n"
+                "<b>উত্তর:</b> মেনু থেকে 🛒 Sell Tokens & Rates-এ গিয়ে আপনার টোকেন সিলেক্ট করে ডিপোজিট এড্রেসে পাঠিয়ে দিন। তারপর স্ক্রিনশট ও আপনার বিকাশ/নগদ/USDT এড্রেস চ্যাটে দিন।\n\n"
                 "<b>প্রশ্ন:</b> পেমেন্ট পেতে কত সময় লাগে?\n"
-                "<b>উত্তর:</b> প্রুফ দেওয়ার ৫ থেকে ১০ মিনিটের মধ্যে ভেরিফাই করে সফলভাবে পেমেন্ট পাঠিয়ে দেওয়া হয়。\n\n"
+                "<b>উত্তর:</b> প্রুফ দেওয়ার ৫ থেকে ১০ মিনিটের মধ্যে ভেরিফাই করে সফলভাবে পেমেন্ট পাঠিয়ে দেওয়া হয়।\n\n"
                 "<b>প্রশ্ন:</b> বর্তমান USDT রেট কত?\n"
                 "<b>উত্তর:</b> আমাদের লাইভ রেট ১ USDT = ১২৫ BDT।"
             ),
@@ -820,7 +821,8 @@ def main():
     # Render-এর জন্য ব্যাকগ্রাউন্ড ডামি সার্ভার চালু
     threading.Thread(target=run_dummy_server, daemon=True).start()
 
-    app = Application.builder().token(BOT_TOKEN).post_init(on_startup).build()
+    token = os.environ.get("BOT_TOKEN", "9258333117:AAG6uXbLsFrpfflK9vr327W-xW7RGLdq_zw")
+    app = Application.builder().token(token).post_init(on_startup).build()
 
     app.add_handler(CommandHandler("start", start))
     app.add_handler(CommandHandler("admin", admin_panel))
