@@ -33,9 +33,9 @@ def run_dummy_server():
     server.serve_forever()
 
 # ----------------- কনফিগারেশন -----------------
-BOT_TOKEN = os.environ.get("BOT_TOKEN", "9258333117:AAG6uXbLsFrpfflK9vr327W-xW7RGLdq_zw")
-ADMIN_ID = 6087200623
-DB_NAME = "trade_hub_production.db"
+BOT_TOKEN = os.environ.get("W-x")
+ADMIN_ID = 
+DB_NAME = "trade__production.db"
 
 FORCE_CHANNEL_1 = "@instant_profit_airdrup_bot"
 FORCE_CHANNEL_2 = "@MH_Official_Payment_Proofs"
